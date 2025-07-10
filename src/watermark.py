@@ -6,8 +6,6 @@ from pydub import AudioSegment
 CONFIG = Path("config.json")
 FORMATS = [".mp3", ".mp4", ".wav", ".aif", ".aiff", ".flac"]
 
-# test_custom = "/mnt/external/Dropbox/music/samples/watermark.wav"
-
 def save_config():
     watermark_path = input("Drag and drop your watermark file of your choice: ")
     with open(CONFIG, 'w', encoding='utf-8') as f:
