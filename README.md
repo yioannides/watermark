@@ -20,7 +20,7 @@ curl -s -o- https://raw.githubusercontent.com/yioannides/watermark/main/install.
 You will first need to initialize the watermark script by drag and drop the watermark file you'll be using from now on, like so:
 
 ```sh
-user@linux:~$ watermark reset
+user@desktop:~$ watermark reset
 Drag and drop your watermark file of your choice: /home/user/Music/clips/watermark1.wav
 ```
 > [!TIP]
@@ -30,7 +30,7 @@ Drag and drop your watermark file of your choice: /home/user/Music/clips/waterma
 
 1. Watermarking separate audio files:
 ```sh
-user@linux:~$ watermark '/home/user/Music/songs/save me.wav'
+user@desktop:~$ watermark '/home/user/Music/songs/save me.wav'
 '/home/user/Downloads/untitled-pop1.wav' '/mnt/cloud/archive/charlie-take1-live.mp3'
 
 3 FILE(S) PROCESSED SUCCESFULLY:
@@ -42,7 +42,7 @@ charlie-take1-live.mp3
 
 2. Watermarking every audio file in the present working directory:
 ```sh
-user@linux:/home/Music/songs/$ watermark *
+user@desktop:/home/Music/songs/$ watermark *
 
 4 FILE(S) PROCESSED SUCCESFULLY:
 save me.wav
