@@ -8,4 +8,11 @@ curl -s -o- https://raw.githubusercontent.com/yioannides/watermark/main/install.
 ```
 ## Usage
 
-placeholder
+You will first need to initialize the watermark script by drag and drop the watermark file you'll be using from now on, like so:
+
+```sh
+user@linux:~$ watermark reset
+Drag and drop your watermark file of your choice: /home/user/Music/clips/watermark1.wav
+
+```
+You can always reset your watermark file by typing `watermark reset`!
