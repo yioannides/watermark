@@ -6,6 +6,6 @@ Simply copy-paste the following command in Terminal:
 ```sh
 # placeholder
 ```
-## How to use
+## Usage
 
 placeholder
