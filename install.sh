@@ -35,4 +35,4 @@ if ! grep -Fxq "$ALIAS_CMD" "$SHELL_RC" 2>/dev/null; then
   echo "$ALIAS_CMD" >> "$SHELL_RC"
 fi
 
-echo -e "\nInstallation complete! You can now run the script by typing:\n\033[1m$APP\033[22m (add \033[3mhelp\033[23m for usage instructions)"
+echo -e "\nInstallation complete! You can now run the script by typing:\n\033[1m$APP\033[22m (add \033[3mhelp\033[23m for usage instructions)\n"
