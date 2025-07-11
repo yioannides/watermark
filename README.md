@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`watermark` is an audio watermarking tool made in Python.
+`watermark` is a simple audio watermarking tool made in Python. It works offline and it's not based on AI.
 
 I initially created this script as a personal project, for generating watermarked audio clips of my music work to share with clients during the production stage of a commission project.
 Over time, it became an entity of its own, so even though I'm not a programmer by any means, I figured I might as well release it and hopefully it will help you in your work as well!
