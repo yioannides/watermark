@@ -3,7 +3,8 @@ import sys
 from pathlib import Path
 from pydub import AudioSegment
 
-CONFIG = Path("config.json")
+PATH = "".join(str(Path.home()) + "/.watermark/src/config.json")
+CONFIG = Path(PATH)
 FORMATS = [".mp3", ".mp4", ".wav", ".aif", ".aiff", ".flac"]
 
 def save_config():
