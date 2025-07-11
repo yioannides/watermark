@@ -29,7 +29,7 @@ save me.wav
 untitled-pop1.wav
 charlie-take1-live.mp3
 ```
-2. Watermarking every audio file in the working directory:
+2. Watermarking every audio file in the present working directory:
 ```sh
 user@linux:/home/Music/songs/$ watermark *
 
