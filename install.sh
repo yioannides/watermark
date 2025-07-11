@@ -6,12 +6,10 @@ APP="watermark"
 REPO="https://github.com/yioannides/watermark"
 INSTALL_DIR="$HOME/.${APP}"
 
-echo -e "Installing \033[1m${APP}\033[22m..."
+echo -e "\nInstalling \033[1m${APP}\033[22m..."
 sleep 1.5
 
-mkdir -p "$HOME/.local/bin"
-
-# Determine shell rc file
+# Determine the shell rc file
 if [[ $SHELL == */zsh ]]; then
   SHELL_RC="$HOME/.zshrc"
 elif [[ $SHELL == */bash ]]; then
@@ -20,28 +18,21 @@ else
   SHELL_RC="$HOME/.profile"
 fi
 
-# Add ~/.local/bin to PATH if not present
-if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_RC" 2>/dev/null; then
-  echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$SHELL_RC"
-fi
-
-export PATH="$HOME/.local/bin:$PATH"
-
 # Clone or update repo
 if [ -d "$INSTALL_DIR" ]; then
   cd "$INSTALL_DIR"
   git pull
 else
   git clone "$REPO" "$INSTALL_DIR"
-  cd "$INSTALL_DIR"
 fi
 
-# Setup Python environment
-if [ ! -d "venv" ]; then
-  /usr/bin/python3 -m venv venv
-fi
+pip3 install --user --upgrade pydub
 
-source venv/bin/activate
-pip install --upgrade pip pydub
+# Add alias to shell rc if not present
+ALIAS_CMD="alias ${APP}='python3 \$HOME/.${APP}/src/${APP}.py \"\$@\"'"
+
+if ! grep -Fxq "$ALIAS_CMD" "$SHELL_RC" 2>/dev/null; then
+  echo "$ALIAS_CMD" >> "$SHELL_RC"
+fi
 
 echo -e "\nInstallation complete! You can now run the script by typing:\n\033[1m$APP\033[22m (add \033[3mhelp\033[23m for usage instructions)"
