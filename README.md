@@ -50,3 +50,6 @@ passing by.mp3
 shape of your heart.mp3
 kelly clark - going forward.flac
 ```
+## Acknowledgments
+
+<b>Mohammed Agoor</b> for providing the core idea for this script: https://stackoverflow.com/questions/78036523/optimizing-audio-watermarking-function-in-python
