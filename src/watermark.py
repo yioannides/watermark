@@ -71,6 +71,8 @@ def watermarking():
 def main():
     if len(sys.argv) == 1:
         raise Exception("No audio files!")
+    elif len(sys.argv) >= 2 and (sys.arvg[i] not in "reset" for i in sys.argv[1:]):
+        raise Exception("Invalid input!")
     elif len(sys.argv) == 2 and sys.argv[1] in "reset":
         save_config()
     else:
