@@ -15,9 +15,27 @@ You will first need to initialize the watermark script by drag and drop the wate
 ```sh
 user@linux:~$ watermark reset
 Drag and drop your watermark file of your choice: /home/user/Music/clips/watermark1.wav
-
 ```
 You can always reset your watermark file by typing `watermark reset`!
 
 ### Watermarking
 
+1. Watermarking separate audio files:
+```sh
+user@linux:~$ watermark '/home/user/Music/songs/save me.wav' '/home/user/Downloads/untitled-pop1.wav' '/mnt/cloud/archive/charlie-take1-live.mp3'
+
+3 FILE(S) PROCESSED SUCCESFULLY:
+save me.wav
+untitled-pop1.wav
+charlie-take1-live.mp3
+```
+2. Watermarking every audio file in the working directory:
+```sh
+user@linux:/home/Music/songs/$ watermark *
+
+4 FILE(S) PROCESSED SUCCESFULLY:
+save me.wav
+passing by.mp3
+shape of your heart.mp3
+kelly clark - going forward.flac
+```
