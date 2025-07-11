@@ -44,4 +44,4 @@ fi
 source venv/bin/activate
 pip install --upgrade pip pydub
 
-echo -e "Installation complete! You can now run the script by typing:\n\033[1m$APP\033[22m (add \033[3mhelp\033[23m for usage instructions)"
+echo -e "\nInstallation complete! You can now run the script by typing:\n\033[1m$APP\033[22m (add \033[3mhelp\033[23m for usage instructions)"
