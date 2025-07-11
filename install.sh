@@ -22,8 +22,10 @@ fi
 if [ -d "$INSTALL_DIR" ]; then
   cd "$INSTALL_DIR"
   git pull
+  rm .git
 else
   git clone "$REPO" "$INSTALL_DIR"
+  rm .git
 fi
 
 pip3 install --user --upgrade pydub
