@@ -66,7 +66,7 @@ def watermarking():
                 position += interval
         watermarked.export(f"{output_file}.mp3", format="mp3", bitrate="128k")
         files.append(file)
-    print(f"\n\x1b[1m{len(files)} FILE(S) PROCESSED SUCCESFULLY:\x1b[22m\n" + "\n".join(files)\n)
+    print(f"\n\x1b[1m{len(files)} FILE(S) PROCESSED SUCCESFULLY:\x1b[22m\n" + "\n".join(files)+ "\n")
 
 def main():
     if len(sys.argv) == 1:
