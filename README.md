@@ -4,7 +4,7 @@
 
 Simply copy-paste the following command in Terminal:
 ```sh
-curl -sO https://raw.githubusercontent.com/yioannides/watermark/main/install.sh | bash
+curl -s -O https://raw.githubusercontent.com/yioannides/watermark/main/install.sh | bash
 ```
 ## Usage
 
