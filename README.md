@@ -4,7 +4,7 @@
 
 Simply copy-paste the following command in Terminal:
 ```sh
-# placeholder
+bash <(curl -s https://raw.githubusercontent.com/yioannides/watermark/main/install.sh)
 ```
 ## Usage
 
