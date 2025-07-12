@@ -26,7 +26,7 @@ Drag and drop your watermark file of your choice: /home/user/Music/clips/waterma
 > [!TIP]
 > You can always reset your watermark file by typing `watermark reset`!
 
-### Watermarking
+### Functions
 
 1. Watermarking separate audio files:
 ```sh
