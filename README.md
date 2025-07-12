@@ -11,7 +11,7 @@ Over time, it became an entity of its own, so even though I'm not a programmer b
 
 Simply copy-paste the following command in Terminal:
 ```sh
-curl -s -o- https://raw.githubusercontent.com/yioannides/watermark/main/install.sh | bash
+curl https://raw.githubusercontent.com/yioannides/watermark/main/install.sh | bash
 ```
 ## Usage
 
