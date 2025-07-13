@@ -1,3 +1,4 @@
 {
-  "watermark_path": "/path/to/file.wav"
+    "interval_long": 5000,
+    "watermark_path": "/path/to/file.wav"
 }
