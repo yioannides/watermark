@@ -1,3 +1,4 @@
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -7,7 +8,16 @@ CONFIG_PATH = "".join(str(Path.home()) + "/.watermark/src/config.json")
 CONFIG = Path(CONFIG_PATH)
 FORMATS = [".mp3", ".mp4", ".wav", ".aif", ".aiff", ".flac"]
 
+def help():
+    """provides a help page for the user"""
+    parser = argparse.ArgumentParser(description="Add audio watermarks onto your audio files")
+    parser.add_argument("*", help="Modifies every valid audio file in the present working directory")
+    parser.add_argument("-r, --reset", metavar="\b", help="Reset/replace the current watermark file")
+    parser.add_argument("-i, --interval", metavar="\b", type=int, help="Change the number of seconds between watermaks (min: 5)")
+    args = parser.parse_args()
+
 def load_config():
+    """loads the user settings from config.json"""
     try:
         with open(CONFIG, 'r', encoding='utf-8') as l:
             file = json.load(l)
@@ -16,6 +26,7 @@ def load_config():
     return file
 
 def change_watermark():
+    """allows the user to change the watermark file"""
     while True:
         watermark_path = input("Add your watermark file: ")
         if Path(watermark_path).exists():
@@ -29,6 +40,7 @@ def change_watermark():
             continue               
     
 def change_interval():
+    """allows the user to change the number of seconds between watermarks"""
     while True:
         try:
             new_interval = int(input("How many seconds between watermarks? (min: 5) "))
@@ -46,6 +58,9 @@ def change_interval():
         sys.exit()
     
 def filehandling():
+    """handles the audio files (either files separately or 
+    all valid audio files in the present working directory)
+    """
     if len(sys.argv) == 2 and sys.argv[1] == "*":
         files = Path().glob("*")
     else:
@@ -62,6 +77,7 @@ interval_long = config["interval_long"]
 watermark_path = config["watermark_path"]
 
 def watermarking():
+    """provides the watermarking via audio slices"""
     WATERMARK = AudioSegment.from_file(watermark_path)
     data = filehandling()
     files = []
@@ -90,12 +106,17 @@ def watermarking():
     print(f"\n\x1b[1m{len(files)} FILE(S) PROCESSED SUCCESFULLY:\x1b[22m\n" + "\n".join(files)+ "\n")
 
 def main():
+    """handles user input & the main logic for this program"""
     if len(sys.argv) == 1:
         raise Exception("No audio files!")
-    elif len(sys.argv) == 2 and sys.argv[1] == "--reset":
-        change_watermark()
-    elif len(sys.argv) == 2 and sys.argv[1] == "--interval":
-        change_interval()
+    elif len(sys.argv) == 2:
+        match sys.argv[1]:
+            case "-h" | "--help":
+                help()
+            case "-r" | "--reset":
+                change_watermark()
+            case "-i" | "--interval":
+                change_interval()
     elif not any(Path(f).suffix.casefold() in FORMATS for f in sys.argv[1:]):
         raise Exception("No valid audio files with supported formats!")
     else:
@@ -103,4 +124,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
