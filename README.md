@@ -20,11 +20,11 @@ curl -s https://raw.githubusercontent.com/yioannides/watermark/main/install.sh |
 You will first need to initialize the watermark script by drag and drop the watermark file you'll be using from now on, like so:
 
 ```sh
-user@desktop:~$ watermark reset
+user@desktop:~$ watermark --reset
 Drag and drop your watermark file of your choice: /home/user/Music/clips/watermark1.wav
 ```
 > [!TIP]
-> You can always reset your watermark file by typing `watermark reset`!
+> You can always reset your watermark file by typing `watermark --reset`!
 
 ### Functions
 
@@ -50,6 +50,14 @@ passing by.mp3
 shape of your heart.mp3
 kelly clark - going forward.flac
 ```
+3. Change the interval between watermarks:
+```sh
+user@desktop:~$ watermark --interval
+How many seconds between intervals? (min: 5) 7
+Watermark interval updated to 7 seconds!
+```
+Please note: any audio files below 5 seconds will have one watermark in the middle.
+
 ## Acknowledgments
 
 <b>Mohammed Agoor</b> for providing the core idea for this script: https://stackoverflow.com/questions/78036523/optimizing-audio-watermarking-function-in-python
