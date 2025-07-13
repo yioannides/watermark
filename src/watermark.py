@@ -58,8 +58,8 @@ def change_interval():
         sys.exit()
     
 def filehandling():
-    """handles the audio files (either files separately or 
-    all valid audio files in the present working directory)
+    """handles the audio files, either: a. files from multiple
+    locations or b. all valid audio files in the present working directory
     """
     if len(sys.argv) == 2 and sys.argv[1] == "*":
         files = Path().glob("*")
