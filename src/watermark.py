@@ -7,23 +7,43 @@ CONFIG_PATH = "".join(str(Path.home()) + "/.watermark/src/config.json")
 CONFIG = Path(CONFIG_PATH)
 FORMATS = [".mp3", ".mp4", ".wav", ".aif", ".aiff", ".flac"]
 
-def save_config():
-    watermark_path = input("Drag and drop your watermark file of your choice: ")
-    with open(CONFIG, 'w', encoding='utf-8') as f:
-        json.dump({"watermark_path": watermark_path}, f, indent=2)
-    print(f"Updated watermark path: \x1b[1m{watermark_path}\x1b[22m")
-    sys.exit()
-
 def load_config():
     try:
-        with open(CONFIG, 'r', encoding='utf-8') as f:
-            file = json.load(f)
+        with open(CONFIG, 'r', encoding='utf-8') as l:
+            file = json.load(l)
     except (FileNotFoundError, json.JSONDecodeError):
-        return save_config()
-    if "/path/to/file.wav" in file["watermark_path"]:
-        return save_config()
-    
+        change_watermark()
     return file
+
+def change_watermark():
+    while True:
+        watermark_path = input("Add your watermark file: ")
+        if Path(watermark_path).exists():
+            config["watermark_path"] = watermark_path
+            with open(CONFIG, 'w', encoding='utf-8') as w:
+                json.dump(config, w, indent=4)
+            print(f"Updated watermark path: \x1b[1m{watermark_path}\x1b[22m")
+            break
+        else:
+            print("File does not exist!")
+            continue               
+    
+def change_interval():
+    while True:
+        try:
+            new_interval = int(input("How many seconds between watermarks? (min: 5) "))
+            if new_interval >= 5:
+                config["interval_long"] = new_interval * 1000
+                with open(CONFIG, 'w', encoding='utf-8') as d:
+                    json.dump(config, d, indent=4)
+                print(f"Watermark interval updated to {new_interval} seconds!")
+            else:
+                print("Please enter a number above 5")
+                continue
+        except ValueError:
+            print("Not a valid number!")
+            continue
+        sys.exit()
     
 def filehandling():
     if len(sys.argv) == 2 and sys.argv[1] == "*":
@@ -34,26 +54,27 @@ def filehandling():
     return [
         (AudioSegment.from_file(file), file.with_name(f"{file.stem}_watermark"), str(Path(file)))
         for file in files
-        if file.suffix.lower() in FORMATS
+        if file.suffix.casefold() in FORMATS
     ]
 
 config = load_config()
-path = config["watermark_path"]
-WATERMARK = AudioSegment.from_file(path)
+interval_long = config["interval_long"]
+watermark_path = config["watermark_path"]
 
 def watermarking():
+    WATERMARK = AudioSegment.from_file(watermark_path)
     data = filehandling()
     files = []
     for audio, output_file, file in data:
         watermarked = audio[:]
         duration = len(audio)
-        if len(audio) <= 5000:
+        if len(audio) < 5000:
             mid = duration / 2
             fadein = audio.fade(to_gain=-12, start=int(mid - 400), end=int(mid - 100))
             fadeout = fadein.fade(to_gain=+12, start=int(mid + 200), end=int(mid + 500))
             watermarked = fadeout.overlay(WATERMARK, position=mid)
         else:
-            interval = 6000
+            interval = interval_long
             position = interval
             while position <= duration:
                 start = int(max(position - 400, 0))
@@ -71,13 +92,15 @@ def watermarking():
 def main():
     if len(sys.argv) == 1:
         raise Exception("No audio files!")
-    elif not any(Path(f).suffix.lower() in FORMATS for f in sys.argv[1:]):
+    elif len(sys.argv) == 2 and sys.argv[1] == "--reset":
+        change_watermark()
+    elif len(sys.argv) == 2 and sys.argv[1] == "--interval":
+        change_interval()
+    elif not any(Path(f).suffix.casefold() in FORMATS for f in sys.argv[1:]):
         raise Exception("No valid audio files with supported formats!")
-    elif len(sys.argv) == 2 and sys.argv[1] == "reset":
-        save_config()
     else:
         watermarking()
 
 if __name__ == "__main__":
     main()
-
+    
