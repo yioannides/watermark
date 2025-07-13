@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`watermark` is a simple (offline & non-AI) audio watermarking tool made in Python.
+<b>watermark</b> is a simple (offline & non-AI) audio watermarking tool made in Python.
 
 I initially created this script as a personal project, for generating watermarked audio clips of my music work to share with clients during the production stage of a commission project.
 Over time, it became an entity of its own, so even though I'm not a programmer by any means, I figured I might as well release it and hopefully it will help you in your work as well!
@@ -17,18 +17,18 @@ curl -s https://raw.githubusercontent.com/yioannides/watermark/main/install.sh |
 
 ### Initial launch
 
-You will first need to initialize the watermark script by drag and drop the watermark file you'll be using from now on, like so:
+You will first need to initialize the watermark script by typing `watermark -r` / `--reset` and adding the watermark file you'll be using, like so:
 
 ```sh
-user@desktop:~$ watermark --reset
-Drag and drop your watermark file of your choice: /home/user/Music/clips/watermark1.wav
+user@desktop:~$ watermark -r
+Add your watermark file: /home/user/Music/clips/watermark1.wav
 ```
 > [!TIP]
-> You can always reset your watermark file by typing `watermark --reset`!
+> You can change your watermark file any time!
 
 ### Functions
 
-1. Watermarking separate audio files:
+1. Watermarking audio files from multiple locations:
 ```sh
 user@desktop:~$ watermark '/home/user/Music/songs/save me.wav'
 '/home/user/Downloads/untitled-pop1.wav' '/mnt/cloud/archive/charlie-take1-live.mp3'
@@ -40,7 +40,7 @@ charlie-take1-live.mp3
 ```
 <sup>* The modified files will be located at the original file's location
 
-2. Watermarking every audio file in the present working directory:
+2. Watermarking every audio file in the present working directory via `*`:
 ```sh
 user@desktop:/home/Music/songs/$ watermark *
 
@@ -52,11 +52,13 @@ kelly clark - going forward.flac
 ```
 3. Change the interval between watermarks:
 ```sh
-user@desktop:~$ watermark --interval
+user@desktop:~$ watermark -i
 How many seconds between intervals? (min: 5) 7
 Watermark interval updated to 7 seconds!
 ```
-Please note: any audio files below 5 seconds will have one watermark in the middle.
+Any audio files below 5 seconds will have one watermark in the middle.
+
+You can always access the help page via `-h` / `--help`!
 
 ## Acknowledgments
 
