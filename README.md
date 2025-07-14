@@ -54,7 +54,7 @@ kelly clark - going forward.flac
 user@desktop:~$ watermark -i 7
 Watermark interval updated to 7 seconds!
 ```
-Any audio files below 5 seconds will have one watermark in the middle.
+<sup>NOTE: Any audio files below 5 seconds will have one watermark in the middle.
 
 Still feeling lost? You can always access the help page by typing `watermark -h` / `--help`!
 
