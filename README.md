@@ -20,8 +20,7 @@ curl -s https://raw.githubusercontent.com/yioannides/watermark/main/install.sh |
 You will first need to initialize the watermark script by typing `watermark -r` / `--reset` and adding the watermark file you'll be using, like so:
 
 ```sh
-user@desktop:~$ watermark -r
-Add your watermark file: /home/user/Music/clips/watermark1.wav
+user@desktop:~$ watermark -r /home/user/Music/clips/watermark1.wav
 ```
 > [!TIP]
 > You can change your watermark file any time!
@@ -52,13 +51,12 @@ kelly clark - going forward.flac
 ```
 3. Change the interval between watermarks:
 ```sh
-user@desktop:~$ watermark -i
-How many seconds between intervals? (min: 5) 7
+user@desktop:~$ watermark -i 7
 Watermark interval updated to 7 seconds!
 ```
-Any audio files below 5 seconds will have one watermark in the middle.
+<sup>NOTE: Any audio files below 5 seconds will have one watermark in the middle.
 
-You can always access the help page via `-h` / `--help`!
+Still feeling lost? You can always access the help page by typing `watermark -h` / `--help`!
 
 ## Acknowledgments
 
