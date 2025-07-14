@@ -10,7 +10,12 @@ FORMATS = [".mp3", ".mp4", ".wav", ".aif", ".aiff", ".flac"]
 
 def help():
     """provides a help page for the user"""
-    parser = argparse.ArgumentParser(description="Add audio watermarks onto your audio files")
+    parser = argparse.ArgumentParser(
+        prog="watermark",
+        description="Add audio watermarks onto your audio files",
+        epilog="Repo: https://github.com/yioannides/watermark"
+    )
+    
     parser.add_argument("*", help="Modifies every valid audio file in the present working directory")
     parser.add_argument("-r, --reset", metavar="\b", help="Reset/replace the current watermark file")
     parser.add_argument("-i, --interval", metavar="\b", type=int, help="Change the number of seconds between watermaks (min: 5)")
