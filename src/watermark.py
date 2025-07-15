@@ -35,8 +35,8 @@ def parse_args():
 def load_config():
     """loads the user settings from config.json"""
     try:
-        with open(CONFIG, 'r', encoding='utf-8') as l:
-            file = json.load(l)
+        with open(CONFIG, 'r', encoding='utf-8') as init:
+            file = json.load(init)
     except (FileNotFoundError, json.JSONDecodeError):
         change_watermark()
     return file
