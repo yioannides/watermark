@@ -35,16 +35,16 @@ def parse_args():
 def load_config():
     """loads the user settings from config.json"""
     try:
-        with open(CONFIG, 'r', encoding='utf-8') as init:
-            file = json.load(init)
+        with open(CONFIG, 'r', encoding='utf-8') as L:
+            file = json.load(L)
     except (FileNotFoundError, json.JSONDecodeError):
         change_watermark()
     return file
 
 def save_config(config):
     CONFIG.parent.mkdir(parents=True, exist_ok=True)
-    with open(CONFIG, 'w', encoding='utf-8') as f:
-        json.dump(config, f, indent=4)
+    with open(CONFIG, 'w', encoding='utf-8') as S:
+        json.dump(config, S, indent=4)
 
 def change_watermark(watermark_path):
     """allows the user to change the watermark file"""
