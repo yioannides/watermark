@@ -1,3 +1,6 @@
+> [!WARNING]
+> **MIGRATED TO GITLAB:** https://gitlab.com/yioannides/watermark
+
 ![showcase](https://github.com/user-attachments/assets/63dbd3d9-218b-40b1-b5a0-1f86a33714f4)
 
 ## Introduction
