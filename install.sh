@@ -3,10 +3,10 @@
 set -e
 
 APP="watermark"
-REPO="https://github.com/yioannides/watermark"
+REPO="https://gitlab.com/yioannides/watermark"
 INSTALL_DIR="$HOME/.${APP}"
 
-echo -e "\nInstalling \033[1m${APP}\033[22m..."
+echo -e "\nInstalling \e[1m${APP}\e[22m..."
 sleep 1.5
 
 # Determine the shell rc file
@@ -26,7 +26,7 @@ else
   git clone "$REPO" "$INSTALL_DIR"
 fi
 
-pip3 install --user --upgrade pydub
+pip3 install --user --upgrade pydub audioop-lts
 
 # Add alias to shell rc if not present
 ALIAS_CMD="alias ${APP}='python3 \$HOME/.${APP}/src/${APP}.py \"\$@\"'"
@@ -35,4 +35,4 @@ if ! grep -Fxq "$ALIAS_CMD" "$SHELL_RC" 2>/dev/null; then
   echo "$ALIAS_CMD" >> "$SHELL_RC"
 fi
 
-echo -e "\nInstallation complete! You can now run the script by typing:\n\033[1m$APP\033[22m (type \033[3m-h\033[23m or \033[3m--help\033[23m for usage instructions)\n"
+echo -e "\n------\nInstallation complete! You can now run the script by typing:\n\e[1m$APP\e[22m (type \e[3m-h\e[23m or \e[3m--help\e[23m for usage instructions)\n"
