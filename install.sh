@@ -3,7 +3,7 @@
 set -e
 
 APP="watermark"
-REPO="https://gitlab.com/yioannides/watermark"
+REPO="https://github.com/yioannides/watermark"
 INSTALL_DIR="$HOME/.${APP}"
 
 echo -e "\nInstalling \e[1m${APP}\e[22m..."
